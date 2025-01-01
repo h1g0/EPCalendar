@@ -1,5 +1,5 @@
 import { StartOfWeek } from "@/app/type/calendarType";
-import { getDayOfWeekStr } from "@/lib/calendarUtils";
+import { getDayOfWeekStr, SupportedLanguages } from "@/const/i18n";
 import { isHoliday } from "@/lib/holidays";
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
 import dayjs from "dayjs";
@@ -11,6 +11,7 @@ export interface CalendarProps {
     padding?: string;
     targetDate?: dayjs.Dayjs;
     holidayList: { string: string }[];
+    lang?: SupportedLanguages;
 }
 
 interface DateWithStyle {
@@ -74,30 +75,23 @@ const getDateStyle = (date: dayjs.Dayjs, holidayList: { string: string }[], targ
     return { color, bgColor, opacity };
 }
 
-/**
- * 指定された年月を基準に、
- * 月曜始まりor日曜始まり で 42日分(6週)のDayjs配列を返す。
- */
+/** Generate an array of 42 (= 6 weeks) dayjs objects for the calendar */
 export function generateCalendarDates(
     monthStart: dayjs.Dayjs,
     startOfWeek: StartOfWeek
-) {
+): dayjs.Dayjs[] {
     const firstDayOfMonth = monthStart;
-    const dayOfWeek = firstDayOfMonth.day(); // 0=日,1=月,...6=土
+    const dayOfWeek = firstDayOfMonth.day(); // [0, 6] 0=Sunday, 6=Saturday
 
     let offset = 0;
     if (startOfWeek === "monday") {
-        // 月曜始まり => 日曜なら6、その他は dayOfWeek-1
         offset = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
     } else {
-        // 日曜始まり => dayOfWeek そのまま
         offset = dayOfWeek;
     }
 
-    // カレンダー開始日 (先月末からの穴埋めを含む)
     const startDate = firstDayOfMonth.subtract(offset, "day");
 
-    // 42日(7日×6週)生成
     const dates: dayjs.Dayjs[] = [];
     for (let i = 0; i < 42; i++) {
         dates.push(startDate.add(i, "day"));
@@ -105,7 +99,6 @@ export function generateCalendarDates(
     return dates;
 }
 
-/** 配列を指定サイズごとに分割 */
 export function chunk<T>(array: T[], size: number): T[][] {
     const result: T[][] = [];
     for (let i = 0; i < array.length; i += size) {
@@ -114,7 +107,7 @@ export function chunk<T>(array: T[], size: number): T[][] {
     return result;
 }
 
-export const Calendar: React.FC<CalendarProps> = ({ targetMonth, startOfWeek, holidayList, targetDate, fontSize = 16, padding }) => {
+export const Calendar: React.FC<CalendarProps> = ({ targetMonth, startOfWeek, holidayList, targetDate, fontSize = 16, padding, lang = 'en' }) => {
 
     const dates = generateCalendarDates(targetMonth, startOfWeek);
     const datesWithStyle: DateWithStyle[] = dates.map((date) => {
@@ -128,22 +121,19 @@ export const Calendar: React.FC<CalendarProps> = ({ targetMonth, startOfWeek, ho
         const result = [];
         if (startOfWeek === "monday") {
             for (let i = 1; i < 6; i++) {
-                result.push({ dayOfWeekStr: getDayOfWeekStr(i), color: colorWeekday });
+                result.push({ dayOfWeekStr: getDayOfWeekStr(i, lang), color: colorWeekday });
             }
-            result.push({ dayOfWeekStr: getDayOfWeekStr(6), color: colorSaturday });
-            result.push({ dayOfWeekStr: getDayOfWeekStr(0), color: colorSundayOrHoliday });
+            result.push({ dayOfWeekStr: getDayOfWeekStr(6, lang), color: colorSaturday });
+            result.push({ dayOfWeekStr: getDayOfWeekStr(0, lang), color: colorSundayOrHoliday });
         } else {
-            result.push({ dayOfWeekStr: getDayOfWeekStr(0), color: colorSundayOrHoliday });
+            result.push({ dayOfWeekStr: getDayOfWeekStr(0, lang), color: colorSundayOrHoliday });
             for (let i = 1; i < 6; i++) {
-                result.push({ dayOfWeekStr: getDayOfWeekStr(i), color: colorWeekday });
+                result.push({ dayOfWeekStr: getDayOfWeekStr(i, lang), color: colorWeekday });
             }
-            result.push({ dayOfWeekStr: getDayOfWeekStr(6), color: colorSaturday });
+            result.push({ dayOfWeekStr: getDayOfWeekStr(6, lang), color: colorSaturday });
         }
         return result;
     }
-
-
-
 
     return (
         <TableContainer component={Paper} sx={{

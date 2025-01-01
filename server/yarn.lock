@@ -263,11 +263,6 @@
   dependencies:
     levn "^0.4.1"
 
-"@fontsource-variable/m-plus-1-code@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/@fontsource-variable/m-plus-1-code/-/m-plus-1-code-5.1.1.tgz#e1d83da389f053ff0d3954e526242c6e21aefdad"
-  integrity sha512-IPieb+JEK8mraKaRjgar+/CJZfU1BeZT4elHSsfbuZQD1ScBd+WPaD1pcVec59p+xfrsxQirPKatf9cJAM9FCw==
-
 "@humanfs/core@^0.19.1":
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/@humanfs/core/-/core-0.19.1.tgz#17c55ca7d426733fe3c561906b8173c336b40a77"

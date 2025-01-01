@@ -8,15 +8,17 @@ import {
 import { StartOfWeek } from "@/app/type/calendarType";
 import { Calendar } from "./Calendar";
 import { screenSize } from "@/const/screen";
-import { getDayOfWeekStr } from "@/lib/calendarUtils";
 import { fetchHolidayList } from "@/lib/holidays";
+import { formatI18n, SupportedLanguages } from "@/const/i18n";
 
 interface CalendarPageProps {
     startOfWeek?: StartOfWeek;
+    lang?: SupportedLanguages;
 }
 
 export const CalendarPage: React.FC<CalendarPageProps> = async ({
     startOfWeek = "monday",
+    lang = "en",
 }) => {
     const today = dayjs();
     const currentMonth = today.startOf("month");
@@ -54,14 +56,14 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
                         color: "white",
                         textShadow: "0 0 8px black",
                     }}>
-                        <Typography sx={{ fontSize: "2rem", mr: 2 }}>
-                            {today.format("YYYY年")}
+                        <Typography sx={{ fontSize: "2rem", mr: 1 }}>
+                            {formatI18n(today, "header.left", lang)}
                         </Typography>
-                        <Typography sx={{ fontSize: "4rem" }} >
-                            {today.format("MM月DD日")}
+                        <Typography sx={{ fontSize: "4rem", mr: 1 }} >
+                            {formatI18n(today, "header.center", lang)}
                         </Typography>
                         <Typography sx={{ fontSize: "2rem" }} >
-                            （{getDayOfWeekStr(today.day())}）
+                            {formatI18n(today, "header.right", lang)}
                         </Typography>
                     </Box>
                     <Calendar
@@ -71,6 +73,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
                         targetDate={dayjs()}
                         fontSize={24}
                         padding="8px"
+                        lang={lang}
                     />
                 </Box>
 
@@ -82,7 +85,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
                             color: "white",
                             textShadow: "0 0 8px black",
                         }}>
-                            {prevMonth.year() !== currentMonth.year() && prevMonth.format("YYYY年")}{prevMonth.format("MM月")}
+                            {prevMonth.year() !== currentMonth.year() ? formatI18n(prevMonth, "prevNextMonth.monthYear", lang) : formatI18n(prevMonth, "prevNextMonth.month", lang)}
                         </Typography>
                         <Calendar
                             startOfWeek={startOfWeek}
@@ -90,6 +93,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
                             targetMonth={prevMonth}
                             fontSize={12}
                             padding="4px"
+                            lang={lang}
                         />
                     </Box>
                     <Box sx={{ mt: 2 }}>
@@ -99,14 +103,16 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
                             color: "white",
                             textShadow: "0 0 8px black",
                         }}>
-                            {nextMonth.year() !== currentMonth.year() && nextMonth.format("YYYY年")}{nextMonth.format("MM月")}
+                            {nextMonth.year() !== currentMonth.year() ? formatI18n(nextMonth, "prevNextMonth.monthYear", lang) : formatI18n(nextMonth, "prevNextMonth.month", lang)}
                         </Typography>
                         <Calendar
                             startOfWeek={startOfWeek}
                             holidayList={holidayList}
                             targetMonth={nextMonth}
                             fontSize={12}
-                            padding={'4px'} />
+                            padding={'4px'}
+                            lang={lang}
+                        />
                     </Box>
                 </Box>
             </Box>

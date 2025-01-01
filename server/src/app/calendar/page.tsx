@@ -6,7 +6,8 @@ export default async function Calendar({
 }: {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-    const { start = 'monday' } = await searchParams;
+    const { start = 'monday', lang = 'en' } = await searchParams;
     const startOfWeek = start === 'sunday' ? 'sunday' : 'monday';
-    return <CalendarPage startOfWeek={startOfWeek} />;
+    const language = lang === 'ja' ? 'ja' : 'en';
+    return <CalendarPage startOfWeek={startOfWeek} lang={language} />;
 }

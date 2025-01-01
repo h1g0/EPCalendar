@@ -1,11 +1,12 @@
 import { StartOfWeek } from "@/app/type/calendarType";
+import { SupportedLanguages } from "@/const/i18n";
 import { screenSize } from "@/const/screen";
 import puppeteer from "puppeteer";
 
-export async function takeScreenshot(startOfWeek: StartOfWeek) {
+export async function takeScreenshot(startOfWeek: StartOfWeek, lang: SupportedLanguages) {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
-    const targetUrl = `${baseUrl}/calendar?start=${startOfWeek}`;
+    const targetUrl = `${baseUrl}/calendar?start=${startOfWeek}&lang=${lang}`;
 
     const args = [
         "--disable-gpu",

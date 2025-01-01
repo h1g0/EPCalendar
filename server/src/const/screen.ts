@@ -1,4 +1,4 @@
-/** Waveshare 7.3inch e-Paper HAT (F) のカラーパレット */
+/** Color palette of Waveshare 7.3inch e-Paper HAT (F) */
 export const screenPaletteHex = [
     "#FF0000", // Red
     "#00FF00", // Green
@@ -9,7 +9,7 @@ export const screenPaletteHex = [
     "#FFFFFF", // White
 ];
 
-/** Waveshare 7.3inch e-Paper HAT (F) の画面サイズ */
+/** Screen size of Waveshare 7.3inch e-Paper HAT (F) */
 export const screenSize = {
     width: 800,
     height: 480,
