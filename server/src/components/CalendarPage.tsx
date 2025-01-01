@@ -48,20 +48,19 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
                         width: "100%",
                         justifyContent: "center",
                         textAlign: "center",
-                        p: "1",
                         alignmentBaseline: "baseline",
                         alignItems: "baseline",
                         m: 1,
                         color: "white",
-                        textShadow: "0 0 16px black",
+                        textShadow: "0 0 8px black",
                     }}>
-                        <Typography variant="h4" sx={{ mr: 2 }}>
+                        <Typography sx={{ fontSize: "2rem", mr: 2 }}>
                             {today.format("YYYY年")}
                         </Typography>
-                        <Typography variant="h2" >
+                        <Typography sx={{ fontSize: "4rem" }} >
                             {today.format("MM月DD日")}
                         </Typography>
-                        <Typography variant="h4">
+                        <Typography sx={{ fontSize: "2rem" }} >
                             （{getDayOfWeekStr(today.day())}）
                         </Typography>
                     </Box>
@@ -77,7 +76,8 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
 
                 <Box sx={{ width: "30%", m: 1, boxSizing: "border-box" }}>
                     <Box>
-                        <Typography variant="h5" sx={{
+                        <Typography sx={{
+                            fontSize: "1.5rem",
                             mb: 0,
                             color: "white",
                             textShadow: "0 0 8px black",
@@ -93,7 +93,8 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
                         />
                     </Box>
                     <Box sx={{ mt: 2 }}>
-                        <Typography variant="h5" sx={{
+                        <Typography sx={{
+                            fontSize: "1.5rem",
                             mb: 0,
                             color: "white",
                             textShadow: "0 0 8px black",

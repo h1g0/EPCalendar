@@ -7,10 +7,10 @@ export async function GET(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
         const start = await searchParams.get("start") === "sunday" ? "sunday" : "monday";
-        const origin = searchParams.get("origin") === "1" ? true : false;
+        const dither = searchParams.get("dither") === "1" ? true : false;
 
         let screenshotBuffer = await takeScreenshot(start);
-        if (!origin) {
+        if (dither) {
             screenshotBuffer = await ditherWithPalette(Buffer.from(screenshotBuffer), screenPaletteHex);
         }
         return new NextResponse(screenshotBuffer, {

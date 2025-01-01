@@ -42,12 +42,12 @@ yarn dev
 to start the server at `http://localhost:3000`.
 
 - Calendar image display:
-  - Dithered:
+  - Original:
     - Monday start: <http://localhost:3000/api/getImage>
     - Sunday start: <http://localhost:3000/api/getImage?start=sunday>
-  - Original:
-    - Monday start: <http://localhost:3000/api/getImage?origin=1>
-    - Sunday start: <http://localhost:3000/api/getImage?start=sunday&origin=1>
+  - Dithered:
+    - Monday start: <http://localhost:3000/api/getImage?dither=1>
+    - Sunday start: <http://localhost:3000/api/getImage?start=sunday&dither=1>
 - Calendar HTML display:
   - Monday start: <http://localhost:3000/calendar>
   - Sunday start: <http://localhost:3000/calendar?start=sunday>
