@@ -2,22 +2,24 @@ import React from "react";
 import dayjs from "dayjs";
 
 import { Box, Typography } from "@mui/material";
-import { StartOfWeek } from "@/app/type/calendarType";
+import { StartOfWeek, SupportedLanguages } from "@/app/type";
 import { Calendar } from "./Calendar";
 import { screenSize } from "@/const/screen";
 import { fetchHolidayList } from "@/lib/holidays";
-import { formatI18n, SupportedLanguages } from "@/const/i18n";
+import { formatI18n } from "@/const/i18n";
 
 interface CalendarPageProps {
+  date?: dayjs.Dayjs;
   startOfWeek?: StartOfWeek;
   lang?: SupportedLanguages;
 }
 
 export const CalendarPage: React.FC<CalendarPageProps> = async ({
+  date = dayjs(),
   startOfWeek = "monday",
   lang = "en",
 }) => {
-  const today = dayjs();
+  const today = date;
   const currentMonth = today.startOf("month");
   const prevMonth = currentMonth.subtract(1, "month");
   const nextMonth = currentMonth.add(1, "month");
@@ -70,7 +72,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
             startOfWeek={startOfWeek}
             holidayList={holidayList}
             targetMonth={currentMonth}
-            targetDate={dayjs()}
+            targetDate={today}
             fontSize={24}
             padding="8px"
             lang={lang}

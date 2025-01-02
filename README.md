@@ -48,14 +48,15 @@ to start the server at `http://localhost:3000`.
 
 ### Available query parameters
 
+- `date`: Specifies the date for display. Available format: `YYYY-MM-DD`. (default: the date of today)
 - `lang`: Specifies the language for display. Available options: `en` or `ja`. (default: `en`)
 - `start`: Specifies whether the calendar week starts on Sunday or Monday. Available options: `monday` or `sunday` (default: `monday`)
 - `dither`: (image only) Enables dithering when set to `1`. (default: disabled)
 
 #### Examples
 
-- <http://localhost:3000/calendar?lang=ja&start=sunday>: Displays the calendar HTML in Japanese with the week starting on Sunday.
-- <http://localhost:3000/api/image.png?lang=en&start=monday&dither=1>: Displays the calendar image in English with the week starting on Monday and dithering enabled.
+- <http://localhost:3000/calendar?date=2025-01-01&lang=ja&start=sunday>: Displays the calendar HTML in Japanese with the week starting on Sunday.
+- <http://localhost:3000/api/image.png?date=2020-02-02&lang=en&start=monday&dither=1>: Displays the calendar image in English with the week starting on Monday and dithering enabled.
 - <http://localhost:3000/api/image.png?lang=ja&start=monday>: Displays the calendar image in Japanese with the week starting on Monday.
 
 ## production build

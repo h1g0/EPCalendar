@@ -1,16 +1,17 @@
-import { StartOfWeek } from "@/app/type/calendarType";
-import { SupportedLanguages } from "@/const/i18n";
+import { StartOfWeek, SupportedLanguages } from "@/app/type";
 import { screenSize } from "@/const/screen";
 import puppeteer from "puppeteer";
 import process from "node:process";
+import dayjs from "dayjs";
 
 export async function takeScreenshot(
+  date: dayjs.Dayjs,
   startOfWeek: StartOfWeek,
   lang: SupportedLanguages,
 ) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
-  const targetUrl = `${baseUrl}/calendar?start=${startOfWeek}&lang=${lang}`;
+  const targetUrl = `${baseUrl}/calendar?date=${date.format("YYYY-MM-DD")}&start=${startOfWeek}&lang=${lang}`;
 
   const args = [
     "--disable-gpu",

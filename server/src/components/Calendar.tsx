@@ -1,5 +1,5 @@
-import { StartOfWeek } from "@/app/type/calendarType";
-import { getDayOfWeekStr, SupportedLanguages } from "@/const/i18n";
+import { StartOfWeek, SupportedLanguages } from "@/app/type";
+import { getDayOfWeekStr } from "@/const/i18n";
 import { isHoliday } from "@/lib/holidays";
 import {
   Paper,

@@ -2,16 +2,8 @@ import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import "dayjs/locale/en";
 import "dayjs/locale/ja";
+import { DictKeys, SupportedLanguages } from "@/app/type";
 dayjs.extend(advancedFormat);
-
-export type SupportedLanguages = "en" | "ja";
-
-export type DictKeys =
-  | "header.left"
-  | "header.center"
-  | "header.right"
-  | "prevNextMonth.month"
-  | "prevNextMonth.monthYear";
 
 export const en: Record<DictKeys, string> = {
   "header.left": "ddd",
@@ -51,3 +43,4 @@ export function formatI18n(
 export function getDayOfWeekStr(day: number, lang: SupportedLanguages): string {
   return dayjs().locale(lang).day(day).format("ddd");
 }
+
