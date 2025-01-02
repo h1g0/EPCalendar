@@ -1,4 +1,5 @@
 import { Jimp } from "jimp";
+import { Buffer } from "node:buffer";
 
 export async function ditherWithPalette(
   inputPngBuffer: Buffer,

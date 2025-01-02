@@ -30,7 +30,7 @@ After cloning this repository:
 
 ```bash
 cd server
-yarn
+deno install
 ```
 
 Then run:

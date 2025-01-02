@@ -2,6 +2,7 @@ import { StartOfWeek } from "@/app/type/calendarType";
 import { SupportedLanguages } from "@/const/i18n";
 import { screenSize } from "@/const/screen";
 import puppeteer from "puppeteer";
+import process from "node:process";
 
 export async function takeScreenshot(
   startOfWeek: StartOfWeek,
