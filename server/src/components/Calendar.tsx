@@ -181,7 +181,7 @@ export const Calendar: React.FC<CalendarProps> = (
       sx={{
         maxWidth: "100%",
         border: "1px solid #ccc",
-        opacity: 0.8,
+        opacity: 0.9,
       }}
     >
       <Table size="small" sx={{ fontSize }}>

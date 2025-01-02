@@ -107,7 +107,7 @@ function findNearestColor(
     const dr = r - c.r;
     const dg = g - c.g;
     const db = b - c.b;
-    const dist = dr * dr + dg * dg + db * db; // ユークリッド距離^2
+    const dist = dr * dr + dg * dg + db * db;
     if (dist < minDist) {
       minDist = dist;
       closest = c;
