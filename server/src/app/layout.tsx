@@ -1,20 +1,20 @@
-import './globals.css';
+import "./globals.css";
 
 export const metadata = {
-    title: 'EPCalendar Server',
-    description: 'Server for EPCalendar',
+  title: "EPCalendar Server",
+  description: "Server for EPCalendar",
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <html lang="ja">
-            <body>
-                {children}
-            </body>
-        </html>
-    );
+  return (
+    <html lang="ja">
+      <body>
+        {children}
+      </body>
+    </html>
+  );
 }
