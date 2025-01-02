@@ -10,7 +10,7 @@ export type DictKeys = "header.left" | "header.center" | "header.right" | "prevN
 
 export const en: Record<DictKeys, string> = {
     "header.left": "ddd",
-    "header.center": "D MMMM",
+    "header.center": "MMMM D",
     "header.right": "YYYY",
 
     "prevNextMonth.month": "MMMM",
