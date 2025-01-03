@@ -32,8 +32,10 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
         sx={{
           width: screenSize.width,
           height: screenSize.height,
+          p: 2,
           display: "flex",
           flexDirection: "row",
+          boxSizing: "border-box",
           backgroundImage: `url('/images/${currentMonth.format("M")}.jpg')`,
           backgroundSize: `${screenSize.width}px`,
         }}
@@ -41,7 +43,12 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
         <Box
           sx={{
             width: "70%",
-            m: 1,
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            boxSizing: "border-box",
+            pr: 1,
           }}
         >
           <Box
@@ -49,7 +56,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
               display: "flex",
               flexDirection: "row",
               width: "100%",
-              justifyContent: "center",
+              justifyContent: "left",
               textAlign: "center",
               alignmentBaseline: "baseline",
               alignItems: "baseline",
@@ -58,13 +65,13 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
               textShadow: "0 0 8px black",
             }}
           >
-            <Typography sx={{ fontSize: "2rem", mr: 1 }}>
+            <Typography sx={{ fontSize: 36, lineHeight: 1 }}>
               {formatI18n(today, "header.left", lang)}
             </Typography>
-            <Typography sx={{ fontSize: "4rem", mr: 1 }}>
+            <Typography sx={{ fontSize: 64, mx: 1.5, lineHeight: 1 }}>
               {formatI18n(today, "header.center", lang)}
             </Typography>
-            <Typography sx={{ fontSize: "2rem" }}>
+            <Typography sx={{ fontSize: 36, lineHeight: 1 }}>
               {formatI18n(today, "header.right", lang)}
             </Typography>
           </Box>
@@ -74,17 +81,24 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
             targetMonth={currentMonth}
             targetDate={today}
             fontSize={24}
-            padding="8px"
+            padding={1}
             lang={lang}
           />
         </Box>
 
-        <Box sx={{ width: "30%", m: 1, boxSizing: "border-box" }}>
+        <Box sx={{
+          width: "30%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          boxSizing: "border-box",
+          pl: 1,
+        }}>
           <Box>
             <Typography
               sx={{
-                fontSize: "1.5rem",
-                mb: 0,
+                fontSize: 24,
                 color: "white",
                 textShadow: "0 0 8px black",
               }}
@@ -98,15 +112,14 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
               holidayList={holidayList}
               targetMonth={prevMonth}
               fontSize={12}
-              padding="4px"
+              padding={0.5}
               lang={lang}
             />
           </Box>
-          <Box sx={{ mt: 2 }}>
+          <Box>
             <Typography
               sx={{
-                fontSize: "1.5rem",
-                mb: 0,
+                fontSize: 24,
                 color: "white",
                 textShadow: "0 0 8px black",
               }}

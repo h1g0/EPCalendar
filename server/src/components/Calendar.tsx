@@ -16,7 +16,7 @@ export interface CalendarProps {
   targetMonth: dayjs.Dayjs;
   startOfWeek: StartOfWeek;
   fontSize?: number;
-  padding?: string;
+  padding?: number | string;
   targetDate?: dayjs.Dayjs;
   holidayList: { string: string }[];
   lang?: SupportedLanguages;
