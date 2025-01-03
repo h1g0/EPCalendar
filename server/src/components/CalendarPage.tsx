@@ -46,7 +46,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
             height: "100%",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
+            justifyContent: "end",
             boxSizing: "border-box",
             pr: 1,
           }}
@@ -68,7 +68,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = async ({
             <Typography sx={{ fontSize: 36, lineHeight: 1 }}>
               {formatI18n(today, "header.left", lang)}
             </Typography>
-            <Typography sx={{ fontSize: 64, mx: 1.5, lineHeight: 1 }}>
+            <Typography sx={{ fontSize: 48, mx: 1.5, lineHeight: 1 }}>
               {formatI18n(today, "header.center", lang)}
             </Typography>
             <Typography sx={{ fontSize: 36, lineHeight: 1 }}>
