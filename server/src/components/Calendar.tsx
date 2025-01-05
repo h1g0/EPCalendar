@@ -44,7 +44,7 @@ const getDateStyle = (
   targetMonth: dayjs.Dayjs,
   targetDate?: dayjs.Dayjs,
 ) => {
-  const day = date.day(); // 0=日,1=月,...6=土
+  const day = date.day(); // 0: Sun, 1: Mon,...6: Sat
   const holiday = isHoliday(date, holidayList);
   let color = "";
   let bgColor = "";
