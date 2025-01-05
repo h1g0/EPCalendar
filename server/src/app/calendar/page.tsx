@@ -1,6 +1,7 @@
 import { CalendarPage } from "@/components/CalendarPage";
 import dayjs from "dayjs";
 import React from "react";
+import { StartOfWeek, SupportedLanguages } from "../type";
 
 export default async function Calendar({
   searchParams,
@@ -12,8 +13,8 @@ export default async function Calendar({
   if (date && typeof date === "string" && dayjs(date).isValid()) {
     showDate = dayjs(date);
   }
-  const startOfWeek = start === "sunday" ? "sunday" : "monday";
-  const language = lang === "ja" ? "ja" : "en";
+  const startOfWeek: StartOfWeek = start === "sunday" ? "sunday" : "monday";
+  const language: SupportedLanguages = lang === "ja" ? "ja" : "en";
   return <CalendarPage
     startOfWeek={startOfWeek}
     lang={language}

@@ -1,3 +1,4 @@
+import { StartOfWeek, SupportedLanguages } from "@/app/type";
 import { screenPaletteHex } from "@/const/screen";
 import { ditherWithPalette } from "@/lib/dither";
 import { takeScreenshot } from "@/lib/screenshot";
@@ -13,10 +14,10 @@ export async function GET(request: NextRequest) {
         if (dateStr && dayjs(dateStr).isValid()) {
             date = dayjs(dateStr);
         }
-        const start = await searchParams.get("start") === "sunday"
+        const start: StartOfWeek = await searchParams.get("start") === "sunday"
             ? "sunday"
             : "monday";
-        const lang = await searchParams.get("lang") === "ja" ? "ja" : "en";
+        const lang: SupportedLanguages = await searchParams.get("lang") === "ja" ? "ja" : "en";
         const dither = searchParams.get("dither") === "1" ? true : false;
 
         let screenshotBuffer = await takeScreenshot(date, start, lang);
