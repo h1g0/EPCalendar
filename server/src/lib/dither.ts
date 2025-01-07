@@ -3,11 +3,15 @@ import { Buffer } from "node:buffer";
 
 export async function ditherWithPalette(
   inputPngBuffer: Buffer,
+  outputWidth: number,
+  outputHeight: number,
   paletteHexStrArray: string[],
 ): Promise<Buffer> {
   const palette = paletteHexStrArray.map((hex) => hexStrToRgb(hex));
 
   const image = await Jimp.read(inputPngBuffer);
+  image.resize({ w: outputWidth, h: outputHeight });
+
   const { data, width, height } = image.bitmap;
 
   // Floyd-Steinberg error diffusion

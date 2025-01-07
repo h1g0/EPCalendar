@@ -1,5 +1,5 @@
 import { StartOfWeek, SupportedLanguages } from "@/app/type";
-import { screenPaletteHex } from "@/const/screen";
+import { screenPaletteHex, screenSize } from "@/const/screen";
 import { ditherWithPalette } from "@/lib/dither";
 import { takeScreenshot } from "@/lib/screenshot";
 import dayjs from "dayjs";
@@ -24,6 +24,8 @@ export async function GET(request: NextRequest) {
         if (dither) {
             screenshotBuffer = await ditherWithPalette(
                 Buffer.from(screenshotBuffer),
+                screenSize.width,
+                screenSize.height,
                 screenPaletteHex,
             );
         }
